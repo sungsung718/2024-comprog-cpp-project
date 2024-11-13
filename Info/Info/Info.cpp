@@ -71,6 +71,14 @@ void Info::setLink(std::string& link) {
 	this->link = link;
 };
 
+time_t Info::getCreatedAt() {
+	return created_at;
+};
+
+void Info::setCreatedAt(time_t created_at) {
+	this->created_at = created_at;
+};
+
 // Add or update a field
 void Info::setField(const std::string& key, const std::string& value) {
     fields[key] = value;

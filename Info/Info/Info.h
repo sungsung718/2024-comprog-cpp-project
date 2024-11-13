@@ -1,4 +1,5 @@
 #pragma once
+#include <ctime>
 #include <string>
 #include <unordered_map>
 
@@ -15,18 +16,27 @@ public:
 
 	int getId();
 	void setId(int id);
+
 	std::string& getTitle();
 	void setTitle(std::string& title);
+
 	std::string& getAuthor();
 	void setAuthor(std::string& author);
+
 	std::string& getType();
 	void setType(std::string& type);
+
 	int getYear();
 	void setYear(int year);
+
 	std::string& getSummary();
 	void setSummary(std::string& summary);
+
 	std::string& getLink();
 	void setLink(std::string& link);
+
+	time_t getCreatedAt();
+	void setCreatedAt(time_t created_at);
 
 	void setField(const std::string& key, const std::string& value);
 
@@ -46,5 +56,6 @@ private:
 	int year;
 	std::string summary;
 	std::string link;
+	time_t created_at;
 	std::unordered_map<std::string, std::string> fields;
 };
