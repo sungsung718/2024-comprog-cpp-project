@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Info.cpp" />
+    <ClCompile Include="json_utils.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Info.h" />
+    <ClInclude Include="json_utils.h" />
     <ClInclude Include="message.h" />
   </ItemGroup>
   <ItemGroup>
