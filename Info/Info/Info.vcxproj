@@ -132,12 +132,14 @@
     <ClCompile Include="Info.cpp" />
     <ClCompile Include="json_utils.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h" />
     <ClInclude Include="Info.h" />
     <ClInclude Include="json_utils.h" />
     <ClInclude Include="message.h" />
+    <ClInclude Include="Server.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Info.rc" />
