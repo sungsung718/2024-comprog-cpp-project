@@ -7,6 +7,7 @@ json json_utils::load_json(const std::string& path) {
 		return json{};
 	}
 
+	std::cout << "Loaded " << path << " successfully." << std::endl;
 	json j;
 	file >> j;
 	return j;

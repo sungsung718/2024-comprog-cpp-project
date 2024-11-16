@@ -56,6 +56,7 @@ void Database::update(const Info& item) {
 			break;
 		}
 	}
+	std::cout << item.getId() << "not found" << std::endl;
 }
 
 void Database::remove(int id) {

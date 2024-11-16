@@ -24,10 +24,16 @@ Info::Info(const json& j) {
 	auto summary = j["summary"].template get<std::string>();
 	auto link = j["link"].template get<std::string>();
 
-	Info info{ title, author, type, year, summary, link };
+	this->id = id;
+	this->title = title;
+	this->author = author;
+	this->type = type;
+	this->year = year;
+	this->summary = summary;
+	this->link = link;
 
 	for (auto& item : j["others"].items()) {
-		info.setField(item.key(), item.value());
+		setField(item.key(), item.value());
 	}
 }
 
@@ -127,9 +133,14 @@ json Info::to_json() const{
 		{"link", link}
 	};
 
-	for (const auto& pair : fields) {
-		j["others"][pair.first] = pair.second;
+	if (fields.empty()) {
+		j["others"] = json::array();
 	}
-
+	else {
+		for (const auto& pair : fields) {
+			j["others"][pair.first] = pair.second;
+		}
+	}
+	
 	return j;
 }
