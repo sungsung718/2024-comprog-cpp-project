@@ -2,12 +2,12 @@
 #include "Info.h"
 
 Info::Info(
-	std::string title="",
-	std::string author="",
-	std::string type="",
-	int year = 2024,
-	std::string summary="",
-	std::string link=""
+	std::string title,
+	std::string author,
+	std::string type,
+	int year,
+	std::string summary,
+	std::string link
 ) : title{ title },
 author{ author },
 type{ type },
