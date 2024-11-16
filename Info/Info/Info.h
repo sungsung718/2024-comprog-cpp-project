@@ -8,12 +8,12 @@ using json = nlohmann::json;
 class Info {
 public:
 	Info(
-		std::string title,
+		std::string title = "",
 		std::string author = "",
 		std::string type = "",
 		int year = 2024,
-		std::string summary,
-		std::string link
+		std::string summary = "",
+		std::string link = ""
 	);
 
 	static Info from_json(const json& j);
