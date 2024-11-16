@@ -8,8 +8,8 @@ using json = nlohmann::json;
 class Info {
 public:
 	Info(
-		std::string title = "",
-		std::string author = "",
+		std::string title,
+		std::string author,
 		std::string type = "",
 		int year = 2024,
 		std::string summary = "",
