@@ -7,7 +7,7 @@ public:
 	~Server();
 	void createItem(Info& item);
 	Info readItem(int id);
-	std::vector<Info>& readll();
+	std::vector<Info>& readAll();
 	void updateItem(Info& item);
 	void deleteItem(int id);
 private:

@@ -11,7 +11,7 @@ Info Server::readItem(int id) {
 	return database.getItem(id);
 }
 
-std::vector<Info>& Server::readll() {
+std::vector<Info>& Server::readAll() {
 	return database.getAll();
 }
 
