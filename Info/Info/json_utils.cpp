@@ -3,8 +3,8 @@
 json json_utils::load_json(const std::string& path) {
 	std::ifstream file(path);
 	if (!file.is_open()) {
-		std::cerr << "Error opening " << path << std::endl;
-		return 1;
+		std::cerr << path << " does not exist." << std::endl;
+		return json{};
 	}
 
 	json j;

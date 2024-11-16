@@ -11,6 +11,10 @@ Database::~Database() {
 void Database::load() {
 	// Load data from file
 	json file = json_utils::load_json(filename);
+	if (file.empty()) {
+		return;
+	}
+
 	next_id = file["meta_data"]["last_id"]+1;
 	for (auto& it : file["data"]) {
 		// Json to Info conversion
