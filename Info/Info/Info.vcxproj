@@ -140,6 +140,7 @@
     <ClInclude Include="json_utils.h" />
     <ClInclude Include="message.h" />
     <ClInclude Include="Server.h" />
+    <ClInclude Include="View.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Info.rc" />

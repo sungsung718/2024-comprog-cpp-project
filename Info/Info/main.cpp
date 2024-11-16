@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Info.h"
 #include "Server.h"
+#include "View.h"
 
 int main() {
 	Server server{ "../test/server.json" };
