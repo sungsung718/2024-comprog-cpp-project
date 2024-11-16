@@ -2,12 +2,12 @@
 #include "Info.h"
 
 Info::Info(
-	std::string title="",
-	std::string author="",
-	std::string type="",
-	int year=2024,
-	std::string summary="",
-	std::string link=""
+	std::string title,
+	std::string author,
+	std::string type,
+	int year,
+	std::string summary,
+	std::string link
 ) : title{ title },
 author{ author },
 type{ type },
@@ -15,7 +15,29 @@ year{ year },
 summary{ summary },
 link{ link } {}
 
-int Info::getId() {
+Info::Info(const json& j) {
+	auto id = j["id"].template get<int>();
+	auto title = j["title"].template get<std::string>();
+	auto author = j["author"].template get<std::string>();
+	auto type = j["type"].template get<std::string>();
+	auto year = j["year"].template get<int>();
+	auto summary = j["summary"].template get<std::string>();
+	auto link = j["link"].template get<std::string>();
+
+	this->id = id;
+	this->title = title;
+	this->author = author;
+	this->type = type;
+	this->year = year;
+	this->summary = summary;
+	this->link = link;
+
+	for (auto& item : j["others"].items()) {
+		setField(item.key(), item.value());
+	}
+}
+
+int Info::getId() const{
 	return id;
 };
 
@@ -47,7 +69,7 @@ void Info::setType(std::string& type) {
 	this->type = type;
 };
 
-int Info::getYear() {
+int Info::getYear() const{
 	return year;
 };
 
@@ -98,4 +120,27 @@ void Info::removeField(const std::string& key) {
 // Get number of fields
 size_t Info::size() const {
     return fields.size();
+}
+
+json Info::to_json() const{
+	json j = {
+		{"id", id},
+		{"title", title},
+		{"author", author},
+		{"type", type},
+		{"year", year},
+		{"summary", summary},
+		{"link", link}
+	};
+
+	if (fields.empty()) {
+		j["others"] = json::array();
+	}
+	else {
+		for (const auto& pair : fields) {
+			j["others"][pair.first] = pair.second;
+		}
+	}
+	
+	return j;
 }

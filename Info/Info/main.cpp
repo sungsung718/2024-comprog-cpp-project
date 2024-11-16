@@ -1,6 +1,10 @@
 #include <iostream>
+#include "Info.h"
+#include "Server.h"
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+	Server server{ "../test/server.json" };
+	std::cout << "Server created" << std::endl;
+
+	return 0;
 }

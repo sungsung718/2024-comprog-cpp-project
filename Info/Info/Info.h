@@ -1,42 +1,52 @@
 #pragma once
+#include "json.hpp"
 #include <string>
 #include <unordered_map>
+
+using json = nlohmann::json;
 
 class Info {
 public:
 	Info(
 		std::string title,
-		std::string author = "",
+		std::string author,
 		std::string type = "",
 		int year = 2024,
-		std::string summary,
-		std::string link
+		std::string summary = "",
+		std::string link = ""
 	);
 
-	int getId();
+	Info(const json& j);
+
+	int getId() const;
 	void setId(int id);
+
 	std::string& getTitle();
 	void setTitle(std::string& title);
+
 	std::string& getAuthor();
 	void setAuthor(std::string& author);
+
 	std::string& getType();
 	void setType(std::string& type);
-	int getYear();
+
+	int getYear() const;
 	void setYear(int year);
+
 	std::string& getSummary();
 	void setSummary(std::string& summary);
+
 	std::string& getLink();
 	void setLink(std::string& link);
 
-	void setField(const std::string& key, const std::string& value);
-
 	std::string getField(const std::string& key) const;
-
+	void setField(const std::string& key, const std::string& value);
 	bool hasField(const std::string& key) const;
-
 	void removeField(const std::string& key);
 
 	size_t size() const;
+
+	json to_json() const;
 
 private:
 	int id{ 0 };
