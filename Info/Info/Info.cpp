@@ -15,7 +15,33 @@ year{ year },
 summary{ summary },
 link{ link } {}
 
-int Info::getId() {
+static Info from_json(const json& j) {
+	Info info;
+
+	auto id = j["id"].template get<int>();
+	auto title = j["title"].template get<std::string>();
+	auto author = j["author"].template get<std::string>();
+	auto type = j["type"].template get<std::string>();
+	auto year = j["year"].template get<int>();
+	auto summary = j["summary"].template get<std::string>();
+	auto link = j["link"].template get<std::string>();
+
+	info.setId(id);
+	info.setTitle(title);
+	info.setAuthor(author);
+	info.setType(type);
+	info.setYear(year);
+	info.setSummary(summary);
+	info.setLink(link);
+
+	for (auto& item : j["others"].items()) {
+		info.setField(item.key(), item.value());
+	}
+
+	return info;
+}
+
+int Info::getId() const{
 	return id;
 };
 
@@ -47,7 +73,7 @@ void Info::setType(std::string& type) {
 	this->type = type;
 };
 
-int Info::getYear() {
+int Info::getYear() const{
 	return year;
 };
 
@@ -69,14 +95,6 @@ std::string& Info::getLink() {
 
 void Info::setLink(std::string& link) {
 	this->link = link;
-};
-
-time_t Info::getCreatedAt() {
-	return created_at;
-};
-
-void Info::setCreatedAt(time_t created_at) {
-	this->created_at = created_at;
 };
 
 // Add or update a field
@@ -106,4 +124,22 @@ void Info::removeField(const std::string& key) {
 // Get number of fields
 size_t Info::size() const {
     return fields.size();
+}
+
+json Info::to_json() const{
+	json j = {
+		{"id", id},
+		{"title", title},
+		{"author", author},
+		{"type", type},
+		{"year", year},
+		{"summary", summary},
+		{"link", link}
+	};
+
+	for (const auto& pair : fields) {
+		j["others"][pair.first] = pair.second;
+	}
+
+	return j;
 }

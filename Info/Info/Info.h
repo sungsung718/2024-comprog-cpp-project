@@ -1,7 +1,9 @@
 #pragma once
-#include <ctime>
+#include "json.hpp"
 #include <string>
 #include <unordered_map>
+
+using json = nlohmann::json;
 
 class Info {
 public:
@@ -14,7 +16,9 @@ public:
 		std::string link
 	);
 
-	int getId();
+	static Info from_json(const json& j);
+
+	int getId() const;
 	void setId(int id);
 
 	std::string& getTitle();
@@ -26,7 +30,7 @@ public:
 	std::string& getType();
 	void setType(std::string& type);
 
-	int getYear();
+	int getYear() const;
 	void setYear(int year);
 
 	std::string& getSummary();
@@ -35,18 +39,14 @@ public:
 	std::string& getLink();
 	void setLink(std::string& link);
 
-	time_t getCreatedAt();
-	void setCreatedAt(time_t created_at);
-
-	void setField(const std::string& key, const std::string& value);
-
 	std::string getField(const std::string& key) const;
-
+	void setField(const std::string& key, const std::string& value);
 	bool hasField(const std::string& key) const;
-
 	void removeField(const std::string& key);
 
 	size_t size() const;
+
+	json to_json() const;
 
 private:
 	int id{ 0 };
@@ -56,6 +56,5 @@ private:
 	int year;
 	std::string summary;
 	std::string link;
-	time_t created_at;
 	std::unordered_map<std::string, std::string> fields;
 };
