@@ -14,7 +14,7 @@ void Database::load() {
 	next_id = file["meta_data"]["last_id"]+1;
 	for (auto& it : file["data"]) {
 		// Json to Info conversion
-		Info info = Info::from_json(it);
+		Info info = Info(it);
 		info_vector.push_back(info);
 	}
 }

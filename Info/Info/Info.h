@@ -16,7 +16,7 @@ public:
 		std::string link = ""
 	);
 
-	static Info from_json(const json& j);
+	Info(const json& j);
 
 	int getId() const;
 	void setId(int id);

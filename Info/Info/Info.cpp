@@ -15,9 +15,7 @@ year{ year },
 summary{ summary },
 link{ link } {}
 
-static Info from_json(const json& j) {
-	Info info;
-
+Info::Info(const json& j) {
 	auto id = j["id"].template get<int>();
 	auto title = j["title"].template get<std::string>();
 	auto author = j["author"].template get<std::string>();
@@ -26,19 +24,11 @@ static Info from_json(const json& j) {
 	auto summary = j["summary"].template get<std::string>();
 	auto link = j["link"].template get<std::string>();
 
-	info.setId(id);
-	info.setTitle(title);
-	info.setAuthor(author);
-	info.setType(type);
-	info.setYear(year);
-	info.setSummary(summary);
-	info.setLink(link);
+	Info info{ title, author, type, year, summary, link };
 
 	for (auto& item : j["others"].items()) {
 		info.setField(item.key(), item.value());
 	}
-
-	return info;
 }
 
 int Info::getId() const{
