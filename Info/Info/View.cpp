@@ -39,10 +39,11 @@ void CreateView::display() {
 	std::cout << "h: " << Message::RETURN_HOME << std::endl;
 	std::cout << std::endl;
 
-	std::cout << Message::WAIT_INPUT;
+	std::cout << Message::WAIT_INPUT_NEWLINE;
 }
 
 void CreateView::confirmCreate() {
+	std::cout << std::endl;
 	std::cout << Message::GUIDE_SAVE_INFO << std::endl;
 	std::cout << Message::WAIT_INPUT;
 }
