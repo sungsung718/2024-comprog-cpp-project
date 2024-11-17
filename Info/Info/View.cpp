@@ -11,6 +11,7 @@ void SummaryView::display() {
 	std::cout << std::endl;
 
 	std::cout << instruction << std::endl;
+	std::cout << "q: " << Message::EXIT_PROGRAM << std::endl;
 	std::cout << "c: " << Message::CREATE_INFO << std::endl;
 	std::cout << std::endl;
 	

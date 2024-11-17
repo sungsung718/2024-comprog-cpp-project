@@ -34,20 +34,18 @@ private:
 
 class DetailView : public View {
 public:
-	DetailView(Info& info) : info{ info } {};
+	DetailView(Info info) : info{ info } {};
 	void display() override;
 private:
 	std::string instruction{};
-	Info& info;
+	Info info;
 };
 
 
 class CreateView : public View {
 public:
-	CreateView(std::vector<Info>& info_vector) : info_vector{ info_vector } {};
 	void display() override;
 	void confirmCreate();
 private:
 	std::string instruction{ Message::GUIDE_CREATE_INFO };
-	std::vector<Info>& info_vector;
 };

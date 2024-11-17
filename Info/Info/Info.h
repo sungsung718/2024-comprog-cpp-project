@@ -2,6 +2,7 @@
 #include "json.hpp"
 #include <string>
 #include <unordered_map>
+#include "string_utils.h"
 
 using json = nlohmann::json;
 
@@ -11,12 +12,13 @@ public:
 		std::string title,
 		std::string author,
 		std::string type = "",
-		int year = 2024,
+		int year = 0,
 		std::string summary = "",
 		std::string link = ""
 	);
 
 	Info(const json& j);
+	Info(std::vector<std::string>& fields, size_t len);
 
 	int getId() const;
 	void setId(int id);

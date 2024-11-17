@@ -22,4 +22,5 @@ namespace Message {
 	const std::string GUIDE_DELETE_INFO{ "Are you sure you want to delete this info? (y/n)" };
 	const std::string SUCCESS_DELETE_INFO{ "Successfully deleted your info." };
 	const std::string SUCCESS_SAVE_INFO{ "Successfully saved your info." };
+	const std::string INVALID_INPUT{ "Invalid input. Please try again." };
 };
