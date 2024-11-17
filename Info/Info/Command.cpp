@@ -34,7 +34,7 @@ State CreateCommand::execute() {
 	input_vector = string_utils::split(input, ';');
 
 	// create info object
-	Info info{input_vector};
+	Info info{input_vector, input_vector.size()};
 	command = std::make_unique<ConfirmSaveAfterCreateCommand>();
 	command->execute();
 
@@ -42,7 +42,8 @@ State CreateCommand::execute() {
 	getline(std::cin, input);
 	input = string_utils::to_lower(input);
 	if (input == "n") {
-		return State::Home;
+		command = std::make_unique<HomeCommand>(server);
+		return command->execute();
 	}
 	if (input == "y") {
 		command = std::make_unique<SaveAfterCreateCommand>(info, server);
@@ -66,5 +67,9 @@ State ConfirmSaveAfterCreateCommand::execute() {
 
 State SaveAfterCreateCommand::execute() {
 	server.createItem(info);
+	std::cout << Message::SUCCESS_SAVE_INFO << std::endl;
+
+	SummaryView view{ server.readAll() };
+	view.display();
 	return State::Home;
 }
