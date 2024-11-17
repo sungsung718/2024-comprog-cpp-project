@@ -44,10 +44,8 @@ private:
 
 class CreateView : public View {
 public:
-	CreateView(std::vector<Info>& info_vector) : info_vector{ info_vector } {};
 	void display() override;
 	void confirmCreate();
 private:
 	std::string instruction{ Message::GUIDE_CREATE_INFO };
-	std::vector<Info>& info_vector;
 };

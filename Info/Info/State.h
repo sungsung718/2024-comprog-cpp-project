@@ -1,8 +1,9 @@
 #pragma once
 
 enum class State {
+	Quit,
 	Home,
-	Summary,
-	CreatingTemp,
-	SavingAfterCreate
+	Detail,
+	WaitingCreateInput,
+	WaitingCreateConfirm
 };
