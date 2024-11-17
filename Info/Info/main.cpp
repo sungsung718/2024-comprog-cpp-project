@@ -13,5 +13,10 @@ int main() {
 	SummaryView view{ infos };
 	view.display();
 
+	CreateView view2{ infos };
+	view2.display();
+	std::cout << std::endl;
+	view2.confirmCreate();
+
 	return 0;
 }
