@@ -11,11 +11,13 @@ State QuitCommand::execute() {
 }
 
 State HomeCommand::execute() {
+	SummaryView view{ server.readAll() };
+	view.display();
 	return State::Home;
 }
 
 State ReadCommand::execute() {
-	SummaryView view{ server.readAll() };
+	DetailView view { server.readItem(id) };
 	view.display();
 	return State::Detail;
 }

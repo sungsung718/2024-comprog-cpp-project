@@ -25,14 +25,18 @@ public:
 
 class HomeCommand : public Command {
 public:
+	HomeCommand(Server& server) : server{ server } {}
 	State execute() override;
+private:
+	Server& server;
 };
 
 class ReadCommand : public Command {
 public:
-	ReadCommand(Server& server) : server{ server } {}
+	ReadCommand(int id, Server& server) : id {id}, server{server} {}
 	State execute() override;
 private:
+	int id;
 	Server& server;
 };
 
