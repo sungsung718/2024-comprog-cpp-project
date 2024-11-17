@@ -4,7 +4,7 @@
 namespace Message {
 	const std::string PROGRAM_NAME{ "Info" };
 	const std::string SLOGAN{ "Look for everything you want to keep" };
-	const std::string WAIT_INPUT{ "Waiting for input..." };
+	const std::string WAIT_INPUT{ "Waiting for input: " };
 	const std::string GO_NEXT_PAGE{ "Go to the next page" };
 	const std::string GO_PREV_PAGE{ "Go to the previous page" };
 	const std::string RETURN_HOME{ "Return home" };
