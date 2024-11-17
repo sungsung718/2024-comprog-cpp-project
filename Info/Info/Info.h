@@ -12,7 +12,7 @@ public:
 		std::string title,
 		std::string author,
 		std::string type = "",
-		int year = 2024,
+		int year = 0,
 		std::string summary = "",
 		std::string link = ""
 	);

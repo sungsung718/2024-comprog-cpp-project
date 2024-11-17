@@ -49,7 +49,7 @@ Info::Info(std::vector<std::string>& fields, size_t len) {
 	type = string_utils::trim(fields[2]);
 	
 	if (!string_utils::is_number(fields[3])) {
-		year = -1;
+		year = 0;
 	}
 	else {
 		year = std::stoi(fields[3]);
