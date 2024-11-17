@@ -144,3 +144,21 @@ json Info::to_json() const{
 	
 	return j;
 }
+
+std::string Info::to_string() const {
+	std::string result = "ID: " + std::to_string(id) + "\n";
+	result += "Title: " + title + "\n";
+	result += "Author: " + author + "\n";
+	result += "Type: " + type + "\n";
+	result += "Year: " + std::to_string(year) + "\n";
+	result += "Summary: " + summary + "\n";
+	result += "Link: " + link + "\n";
+
+	if (!fields.empty()) {
+		for (const auto& pair : fields) {
+			result += pair.first + ": " + pair.second + "\n";
+		}
+	}
+
+	return result;
+}

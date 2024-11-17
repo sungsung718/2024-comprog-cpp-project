@@ -31,6 +31,17 @@ private:
 	void printSummary();
 };
 
+
+class DetailView : public View {
+public:
+	DetailView(Info& info) : info{ info } {};
+	void display() override;
+private:
+	std::string instruction{};
+	Info& info;
+};
+
+
 class CreateView : public View {
 public:
 	CreateView(std::vector<Info>& info_vector) : info_vector{ info_vector } {};
