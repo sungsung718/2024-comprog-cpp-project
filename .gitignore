@@ -439,5 +439,6 @@ FodyWeavers.xsd
 memo.md
 tmp.md
 test
+database.json
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,visualstudio

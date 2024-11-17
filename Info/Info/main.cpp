@@ -5,8 +5,7 @@
 #include "View.h"
 
 int main() {
-	Server server{ "../test/server.json" };
-	std::cout << "Server created" << std::endl;
+	Server server{ "./database.json" };
 
 	CommandFactory commandFactory{ server };
 	std::unique_ptr<Command> command = commandFactory.init_command();
