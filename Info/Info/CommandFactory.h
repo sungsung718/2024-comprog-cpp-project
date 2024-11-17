@@ -9,5 +9,5 @@ public:
 	std::unique_ptr<Command> init_command();
 	std::unique_ptr<Command> create_command(std::string input, State current_state);
 private:
-	Server server;
+	Server& server;
 };
