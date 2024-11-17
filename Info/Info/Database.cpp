@@ -12,6 +12,7 @@ void Database::load() {
 	// Load data from file
 	json file = json_utils::load_json(filename);
 	if (file.empty()) {
+		std::cout << "Created " << filename << std::endl;
 		return;
 	}
 
