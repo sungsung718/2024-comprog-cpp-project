@@ -117,7 +117,32 @@ void Info::setLink(std::string& link) {
 
 // Add or update a field
 void Info::setField(const std::string& key, const std::string& value) {
-    fields[key] = value;
+	if (key == "title") {
+		title = value;
+	}
+	else if (key == "author") {
+		author = value;
+	}
+	else if (key == "type") {
+		type = value;
+	}
+	else if (key == "year") {
+		if (!string_utils::is_number(value)) {
+			setYear(0);
+		}
+		else {
+			setYear(std::stoi(value));
+		}
+	}
+	else if (key == "summary") {
+		summary = value;
+	}
+	else if (key == "link") {
+		link = value;
+	}
+	else {
+		fields[key] = value;
+	}
 }
 
 // Get a field value
@@ -172,7 +197,14 @@ std::string Info::to_string() const {
 	result += "Title: " + title + "\n";
 	result += "Author: " + author + "\n";
 	result += "Type: " + type + "\n";
-	result += "Year: " + std::to_string(year) + "\n";
+
+	if (year == 0) {
+		result += "Year: \n";
+	}
+	else {
+		result += "Year: " + std::to_string(year) + "\n";
+	}
+
 	result += "Summary: " + summary + "\n";
 	result += "Link: " + link + "\n";
 

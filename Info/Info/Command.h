@@ -50,6 +50,15 @@ private:
 	Server& server;
 };
 
+class UpdateCommand : public Command {
+public:
+	UpdateCommand(Info& info, Server& server) : info{ info }, server{ server } {}
+	State execute() override;
+private:
+	Info& info;
+	Server& server;
+};
+
 class CreateCommand : public Command {
 public:
 	CreateCommand(Server& server) : server{ server } {}

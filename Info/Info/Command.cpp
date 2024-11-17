@@ -26,6 +26,12 @@ State ReadCommand::execute() {
 	input = string_utils::to_lower(input);
 	std::unique_ptr<Command> command;
 
+	if (input == "u") {
+		Info info = server.readItem(id);
+		command = std::make_unique<UpdateCommand>(info, server);
+		return command->execute();
+	}
+	
 	if (input == "d") {
 		command = std::make_unique<DeleteCommand>(id, server);
 		return command->execute();
@@ -68,6 +74,42 @@ State DeleteCommand::execute() {
 
 	command = std::make_unique<InvalidCommand>(State::Delete);
 	return command->execute();
+}
+
+State UpdateCommand::execute() {
+	UpdateView view{ info };
+	std::string input;
+	std::unique_ptr<Command> command;
+	State state{ State::Update };
+	do {
+		view.display();
+
+		getline(std::cin, input);
+		
+		if (input == "h" || input == "H") {
+			command = std::make_unique<HomeCommand>(server);
+			return command->execute();
+		}
+
+		std::vector<std::string> input_vector;
+		input_vector = string_utils::split(input, ';');
+		if (input_vector.size() != 2) {
+			command = std::make_unique<InvalidCommand>(State::Update);
+			command->execute();
+		}
+		else {
+			for (auto& i : input_vector) {
+				i = string_utils::trim(i);
+			}
+			auto& field = input_vector[0];
+			field = string_utils::to_lower(field);
+			auto& value = input_vector[1];
+
+			info.setField(field, value);
+			server.updateItem(info);
+			std::cout << Message::SUCCESS_SAVE_INFO << std::endl;
+		}
+	} while (state == State::Update);
 }
 
 State CreateCommand::execute() {
