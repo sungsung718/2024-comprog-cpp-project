@@ -5,6 +5,7 @@ enum class State {
 	Quit,
 	Home,
 	Detail,
+	Delete,
 	WaitingCreateInput,
 	WaitingCreateConfirm
 };

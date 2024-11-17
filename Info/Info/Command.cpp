@@ -20,7 +20,54 @@ State HomeCommand::execute() {
 State ReadCommand::execute() {
 	DetailView view { server.readItem(id) };
 	view.display();
-	return State::Detail;
+
+	std::string input;
+	getline(std::cin, input);
+	input = string_utils::to_lower(input);
+	std::unique_ptr<Command> command;
+
+	if (input == "d") {
+		command = std::make_unique<DeleteCommand>(id, server);
+		return command->execute();
+	}
+
+	if (input == "h") {
+		command = std::make_unique<HomeCommand>(server);
+		return command->execute();
+	}
+
+	command = std::make_unique<InvalidCommand>(State::Detail);
+	return command->execute();
+}
+
+State DeleteCommand::execute() {
+	DeleteView view{ server.readItem(id) };
+	view.display();
+
+	std::string input;
+	getline(std::cin, input);
+	input = string_utils::to_lower(input);
+	std::unique_ptr<Command> command;
+
+	if (input == "h") {
+		command = std::make_unique<HomeCommand>(server);
+		return command->execute();
+	}
+
+	if (input == "n") {
+		command = std::make_unique<ReadCommand>(id, server);
+		return command->execute();
+	}
+
+	if (input == "y") {
+		server.deleteItem(id);
+		std::cout << Message::SUCCESS_DELETE_INFO << std::endl;
+		command = std::make_unique<HomeCommand>(server);
+		return command->execute();
+	}
+
+	command = std::make_unique<InvalidCommand>(State::Delete);
+	return command->execute();
 }
 
 State CreateCommand::execute() {
