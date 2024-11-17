@@ -41,6 +41,15 @@ private:
 	Server& server;
 };
 
+class DeleteCommand : public Command {
+public:
+	DeleteCommand(int id, Server& server) : id{ id }, server{ server } {}
+	State execute() override;
+private:
+	int id;
+	Server& server;
+};
+
 class CreateCommand : public Command {
 public:
 	CreateCommand(Server& server) : server{ server } {}

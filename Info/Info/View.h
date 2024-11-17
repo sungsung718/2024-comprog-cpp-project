@@ -42,6 +42,17 @@ private:
 };
 
 
+class DeleteView : public View {
+public:
+	DeleteView(Info info) : info{ info } {};
+	void display() override;
+	void confirmDelete();
+private:
+	std::string instruction{ Message::GUIDE_DELETE_INFO };
+	Info info;
+};
+
+
 class CreateView : public View {
 public:
 	void display() override;

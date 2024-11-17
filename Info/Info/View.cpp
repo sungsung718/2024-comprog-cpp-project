@@ -39,12 +39,27 @@ void DetailView::display() {
 	std::cout << info.to_string();
 	std::cout << std::endl;
 
+	std::cout << "d: " << Message::DELETE_INFO << std::endl;
 	std::cout << "h: " << Message::RETURN_HOME << std::endl;
 	std::cout << std::endl;
 
 	std::cout << Message::WAIT_INPUT;
 }
 
+
+void DeleteView::display() {
+	displayViewSeparator();
+	std::cout << Message::PROGRAM_NAME << std::endl;
+	std::cout << Message::SLOGAN << std::endl;
+	std::cout << std::endl;
+
+	std::cout << info.to_string();
+	std::cout << std::endl;
+
+	std::cout << "h: " << Message::RETURN_HOME << std::endl;
+	std::cout << instruction << std::endl;
+	std::cout << Message::WAIT_INPUT;
+}
 
 void CreateView::display() {
 	displayViewSeparator();
