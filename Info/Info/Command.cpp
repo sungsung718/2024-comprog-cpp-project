@@ -2,6 +2,7 @@
 
 State InvalidCommand::execute() {
 	std::cout << Message::INVALID_INPUT << std::endl;
+	std::cout << Message::WAIT_INPUT << std::endl;
 	return current_state;
 }
 
