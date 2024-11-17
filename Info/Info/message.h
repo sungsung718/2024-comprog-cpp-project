@@ -5,6 +5,7 @@ namespace Message {
 	const std::string PROGRAM_NAME{ "Info" };
 	const std::string SLOGAN{ "Look for everything you want to keep" };
 	const std::string WAIT_INPUT{ "Waiting for input: " };
+	const std::string WAIT_INPUT_NEWLINE{ "Waiting for input\n: " };
 	const std::string GO_NEXT_PAGE{ "Go to the next page" };
 	const std::string GO_PREV_PAGE{ "Go to the previous page" };
 	const std::string RETURN_HOME{ "Return home" };
@@ -15,7 +16,8 @@ namespace Message {
 	const std::string SAVE_INFO{ "Save info" };
 	const std::string SEARCH_INFO{ "Search" };
 	const std::string PRESS_ID{ "Type in info id to read, update, and delete your info" };
-	const std::string GUIDE_CREATE_INFO{ "Write { title }; { author }; { type }; { published year }; { summary }; { link }.\n Leave the field blank if you do not wish to fill in. (e.g Hong Gildong; Heo Gyun; Book;;)" };
+	const std::string GUIDE_CREATE_INFO{ "Write { title }; { author }; { type }; { published year }; { summary }; { link }.\nLeave the field blank if you do not wish to fill in. (e.g Hong Gildong; Heo Gyun; Book;;)" };
+	const std::string GUIDE_SAVE_INFO{ "Are you sure you want to save this info? (y/n)" };
 	const std::string GUIDE_UPDATE_INFO{ "Write { field name };{ value to be updated } (e.g.Title;New Title) to update your info.\n You have to save info before you move home in order to reflect your change(s)." };
 	const std::string GUIDE_DELETE_INFO{ "Are you sure you want to delete this info? (y/n)" };
 	const std::string SUCCESS_DELETE_INFO{ "Successfully deleted your info." };
