@@ -1,13 +1,13 @@
 #pragma once
 #include "Server.h"
 #include "State.h"
+#include "string_utils.h"
 #include "message.h"
 #include "View.h"
 
 class Command {
 public:
-	virtual ~Command() = default;
-	virtual State execute() = 0;
+	virtual State execute();
 };
 
 class InvalidCommand : public Command {
@@ -38,6 +38,17 @@ public:
 private:
 	int id;
 	Server& server;
+};
+
+class CreateCommand : public Command {
+public:
+	CreateCommand(Server& server) : server{ server } {}
+	State execute() override;
+private:
+	Server& server;
+	Command wait_command;
+	Command confirm_command;
+	Command save_command;
 };
 
 class WaitCreateInputCommand : public Command {

@@ -2,6 +2,7 @@
 #include "json.hpp"
 #include <string>
 #include <unordered_map>
+#include "string_utils.h"
 
 using json = nlohmann::json;
 
@@ -17,6 +18,7 @@ public:
 	);
 
 	Info(const json& j);
+	Info(std::vector<std::string>& fields, int len);
 
 	int getId() const;
 	void setId(int id);

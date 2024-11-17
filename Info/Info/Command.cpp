@@ -22,6 +22,35 @@ State ReadCommand::execute() {
 	return State::Detail;
 }
 
+State CreateCommand::execute() {
+	wait_command = WaitCreateInputCommand{};
+	wait_command.execute();
+
+	// get input
+	std::string input;
+	getline(std::cin, input);
+	std::vector<std::string> input_vector;
+	input_vector = string_utils::split(input, ';');
+
+	// create info object
+	Info info{input_vector};
+	confirm_command = ConfirmSaveAfterCreateCommand{};
+	confirm_command.execute();
+
+	// get confirmation as y/n
+	getline(std::cin, input);
+	input = string_utils::to_lower(input);
+	if (input == "n") {
+		return State::Home;
+	}
+	if (input == "y") {
+		save_command = SaveAfterCreateCommand{ info, server };
+		return save_command.execute();
+	}
+
+	return State::Invalid;
+}
+
 State WaitCreateInputCommand::execute() {
 	CreateView view{};
 	view.display();

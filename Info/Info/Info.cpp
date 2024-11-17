@@ -37,6 +37,28 @@ Info::Info(const json& j) {
 	}
 }
 
+Info::Info(std::vector<std::string>& fields, int len) {
+	if (len < 6) {
+		for (int i = 0; i < 6 - len; i++) {
+			fields.push_back("");
+		}
+	}
+
+	title = string_utils::trim(fields[0]);
+	author = string_utils::trim(fields[1]);
+	type = string_utils::trim(fields[2]);
+	
+	if (!string_utils::is_number(fields[3])) {
+		year = -1;
+	}
+	else {
+		year = std::stoi(fields[3]);
+	}
+
+	summary = string_utils::trim(fields[4]);
+	link = string_utils::trim(fields[5]);
+}
+
 int Info::getId() const{
 	return id;
 };

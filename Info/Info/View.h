@@ -34,11 +34,11 @@ private:
 
 class DetailView : public View {
 public:
-	DetailView(Info& info) : info{ info } {};
+	DetailView(Info info) : info{ info } {};
 	void display() override;
 private:
 	std::string instruction{};
-	Info& info;
+	Info info;
 };
 
 
