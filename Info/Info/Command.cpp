@@ -23,8 +23,9 @@ State ReadCommand::execute() {
 }
 
 State CreateCommand::execute() {
-	wait_command = WaitCreateInputCommand{};
-	wait_command.execute();
+	std::unique_ptr<Command> command;
+	command = std::make_unique<WaitCreateInputCommand>();
+	command->execute();
 
 	// get input
 	std::string input;
@@ -34,8 +35,8 @@ State CreateCommand::execute() {
 
 	// create info object
 	Info info{input_vector};
-	confirm_command = ConfirmSaveAfterCreateCommand{};
-	confirm_command.execute();
+	command = std::make_unique<ConfirmSaveAfterCreateCommand>();
+	command->execute();
 
 	// get confirmation as y/n
 	getline(std::cin, input);
@@ -44,8 +45,8 @@ State CreateCommand::execute() {
 		return State::Home;
 	}
 	if (input == "y") {
-		save_command = SaveAfterCreateCommand{ info, server };
-		return save_command.execute();
+		command = std::make_unique<SaveAfterCreateCommand>(info, server);
+		return command->execute();
 	}
 
 	return State::Invalid;

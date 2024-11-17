@@ -7,7 +7,8 @@
 
 class Command {
 public:
-	virtual State execute();
+	virtual ~Command() = default;
+	virtual State execute() = 0;
 };
 
 class InvalidCommand : public Command {
@@ -46,9 +47,6 @@ public:
 	State execute() override;
 private:
 	Server& server;
-	Command wait_command;
-	Command confirm_command;
-	Command save_command;
 };
 
 class WaitCreateInputCommand : public Command {

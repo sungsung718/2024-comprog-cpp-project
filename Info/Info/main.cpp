@@ -1,4 +1,5 @@
 #include <iostream>
+#include "CommandFactory.h"
 #include "Info.h"
 #include "Server.h"
 #include "View.h"
@@ -7,22 +8,16 @@ int main() {
 	Server server{ "../test/server.json" };
 	std::cout << "Server created" << std::endl;
 
-	std::vector<Info> infos = server.readAll();
-	std::cout << "Read all infos" << std::endl;
+	CommandFactory commandFactory{ server };
+	std::unique_ptr<Command> command = commandFactory.init_command();
+	State state = command->execute();
 
-	SummaryView view{ infos };
-	view.display();
-	std::cout << std::endl;
-
-	CreateView view2{ infos };
-	view2.display();
-	std::cout << std::endl;
-	view2.confirmCreate();
-	std::cout << std::endl;
-
-	Info info = server.readItem(1);
-	DetailView view3{ info };
-	view3.display();
+	std::string input;
+	while (state != State::Quit) {
+		std::getline(std::cin, input);
+		command = commandFactory.create_command(input, state);
+		state = command->execute();
+	}
 
 	return 0;
 }
