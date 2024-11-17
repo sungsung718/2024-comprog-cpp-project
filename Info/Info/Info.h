@@ -18,7 +18,7 @@ public:
 	);
 
 	Info(const json& j);
-	Info(std::vector<std::string>& fields, int len);
+	Info(std::vector<std::string>& fields, size_t len);
 
 	int getId() const;
 	void setId(int id);

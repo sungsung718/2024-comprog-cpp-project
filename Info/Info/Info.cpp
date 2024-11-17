@@ -37,7 +37,7 @@ Info::Info(const json& j) {
 	}
 }
 
-Info::Info(std::vector<std::string>& fields, int len) {
+Info::Info(std::vector<std::string>& fields, size_t len) {
 	if (len < 6) {
 		for (int i = 0; i < 6 - len; i++) {
 			fields.push_back("");
