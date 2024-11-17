@@ -47,6 +47,7 @@ public:
 	size_t size() const;
 
 	json to_json() const;
+	std::string to_string() const;
 
 private:
 	int id{ 0 };

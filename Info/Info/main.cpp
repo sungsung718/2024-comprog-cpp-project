@@ -12,11 +12,17 @@ int main() {
 
 	SummaryView view{ infos };
 	view.display();
+	std::cout << std::endl;
 
 	CreateView view2{ infos };
 	view2.display();
 	std::cout << std::endl;
 	view2.confirmCreate();
+	std::cout << std::endl;
+
+	Info info = server.readItem(1);
+	DetailView view3{ info };
+	view3.display();
 
 	return 0;
 }
