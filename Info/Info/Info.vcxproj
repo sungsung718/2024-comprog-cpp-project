@@ -143,6 +143,7 @@
     <ClInclude Include="message.h" />
     <ClInclude Include="print_utils.h" />
     <ClInclude Include="Server.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="View.h" />
   </ItemGroup>
   <ItemGroup>
