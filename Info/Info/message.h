@@ -18,7 +18,7 @@ namespace Message {
 	const std::string PRESS_ID{ "Type in info id to read, update, and delete your info" };
 	const std::string GUIDE_CREATE_INFO{ "Write { title }; { author }; { type }; { published year }; { summary }; { link }.\nLeave the field blank if you do not wish to fill in. (e.g Hong Gildong; Heo Gyun; Book;;)" };
 	const std::string GUIDE_SAVE_INFO{ "Are you sure you want to save this info? (y/n)" };
-	const std::string GUIDE_UPDATE_INFO{ "Write { field name };{ value to be updated } (e.g.title;New Title) to update your info." };
+	const std::string GUIDE_UPDATE_INFO{ "Write { field name };{ value to be updated } (e.g.title;New Title) to update your info.\nYou can add additional fields if you want (e.g. tag;AI)." };
 	const std::string GUIDE_DELETE_INFO{ "Are you sure you want to delete this info? (y/n)" };
 	const std::string SUCCESS_DELETE_INFO{ "Successfully deleted your info." };
 	const std::string SUCCESS_SAVE_INFO{ "Successfully saved your info." };
